@@ -6,7 +6,7 @@ import TradeLikePro from "./_components/TradeLikePro";
 
 export default function Home() {
   return (
-    <div className="w-full h-full">
+    <div className="w-full">
       <Hero />
       <FastMatching/>
       <EasyAnalysis/>

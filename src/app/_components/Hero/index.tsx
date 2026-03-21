@@ -1,13 +1,13 @@
 const Hero = () => {
   return (
-    <section className="w-full min-h-screen font-atrotis border p-2 sm:pt-10 lg:pt-20 flex items-center justify-center  ">
-      <div className="w-full grid grid-cols-12 lg:grid-cols-12 p-2 sm:py-10 lg:pt-20 gap-8 ">
+    <section className="font-atrotis p-2 sm:pt-10 lg:pt-20 flex items-center justify-center">
+      <div className=" grid grid-cols-12 lg:grid-cols-12 p-2 sm:py-10 lg:pt-20 gap-8 ">
         {/* left section */}
         <div className="w-full aspect-auto xl:aspect-9/12 2xl:aspect-auto col-span-12 sm:col-span-6 order-2 sm:order-1">
           <img
             src="/images/hand.png"
             alt="hero image"
-            className="w-full h-full  "
+            className="w-full h-auto max-h-[50vh] sm:max-h-none object-contain"
           />
         </div>
 
@@ -24,7 +24,7 @@ const Hero = () => {
           <div className="h-4" />
           {/* app installation part google/apple */}
           <div className="relative flex w-full gap-2 lg:gap-4 justify-center items-center">
-            <div className="absolute -top-22 right-0 lg:top-0 lg:-right-4 -z-10">
+            <div className="absolute -top-22 right-10 lg:top-0 lg:-right-4 -z-10">
               <img
                 src="/images/regular.png"
                 alt="verified backgroun icon"
@@ -62,7 +62,7 @@ const Hero = () => {
               master traders! Whether you are a pro or beginner, you can now
               trade quicker and more confidently.
             </span>
-            <div className="flex my-4 [&>span]:border [&>span]:p-2 [&>span]:rounded-md gap-4">
+            <div className="flex flex-wrap my-4 [&>span]:border [&>span]:p-2 [&>span]:rounded-md gap-4">
               <span className="border-amber-200">Forex</span>
               <span className="border-[#df7c1e]">Precious Metals</span>
               <span className="border-red-500">Oil</span>

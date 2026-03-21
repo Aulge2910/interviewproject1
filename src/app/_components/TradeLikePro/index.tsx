@@ -25,9 +25,9 @@ const TradeLikePro = () => {
   const activeTabData = TradeData.find((tab) => tab.id === activeTabId);
 
   return (
-    <section className="w-full h-full">
+    <section className="w-full h-full text-center">
       {/* top title of section */}
-      <div className="w-full relative flex justify-center items-end h-100 border overflow-hidden">
+      <div className="w-full relative flex justify-center items-end h-60 lg:h-100 overflow-hidden">
         <img
           src="/images/bg-1.png"
           alt="bg layer 1"
@@ -41,7 +41,7 @@ const TradeLikePro = () => {
       {/* divider */}
       <div className="h-4" />
 
-      <div className="grid grid-cols-12 w-full lg:w-[80vw] gap-2 mx-auto">
+      <div className="grid grid-cols-12 w-full lg:w-[80vw] gap-2 mx-auto text-center">
         {/* desktop view */}
         {/* left side */}
         <div className="w-full h-full hidden lg:flex lg:flex-col gap-2 lg:col-span-6 [&>div:nth-child(odd)]:border-yellow-200 [&>div:nth-child(odd)_span:first-child]:text-yellow-400  [&>div:nth-child(even)]:border-orange-400 [&>div:nth-child(even)_span:first-child]:text-orange-400 p-4">
@@ -59,7 +59,7 @@ const TradeLikePro = () => {
                     
                     `}
               >
-                <span className="absolute left-4 text-4xl italic">
+                <span className="absolute  sm:left-4 text-4xl italic">
                   {item.id}
                 </span>
                 <span className="">{item.label}</span>
@@ -88,11 +88,11 @@ const TradeLikePro = () => {
               <div
                 key={item.id}
                 onClick={() => setActiveTabId(item.id)}
-                className="w-full flex flex-col gap-3 lg:hidden p-4"
+                className="w-full flex flex-col gap-3 lg:hidden"
               >
                 <div
                   className={` w-full p-8 relative border rounded-xl flex justify-center items-center transition-all duration-500 text-white  
-                    ${isActive ? "bg-[#2e4397] shadow-lg text-2xl font-semibold border-gold " : ""}
+                    ${isActive ? "bg-[#2e4397] shadow-lg font-semibold border-gold " : ""}
                       ${isActive && isOdd ? "[&>span:last-child]:text-yellow-400" : ""}
                         ${isActive && !isOdd ? "[&>span:last-child]:text-orange-400" : ""}
                     `}
