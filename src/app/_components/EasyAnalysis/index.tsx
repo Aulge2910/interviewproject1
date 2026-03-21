@@ -16,28 +16,28 @@ const EasyAnalysis = () => {
             <img
               src="/images/function-1.png"
               alt="easy analysis section 1 zoom"
-              className="absolute w-32 h-20 -top-2 -left-10 sm:-top-6 sm:-left-1/2"
+              className="absolute w-32 h-20 lg:w-auto lg:h-auto -top-2 -left-10 sm:-top-6 sm:-left-1/2"
             />
             <img
               src="/images/function-2.png"
               alt="easy analysis section 2 zoom"
-              className="absolute w-32 h-20 top-16 -right-10 sm:top-22 sm:-right-1/2"
+              className="absolute w-32 h-20 lg:w-auto lg:h-auto top-16 -right-10 sm:top-22 sm:-right-1/2"
             />
             <img
               src="/images/function-3.png"
               alt="easy analysis section 3 zoom"
-              className="absolute  w-32 h-20 top-30 -left-10 sm:top-46 sm:-left-1/2"
+              className="absolute  w-32 h-20 lg:w-auto lg:h-auto top-30 -left-10 sm:top-46 sm:-left-1/2"
             />
 
             <img
               src="/images/function-4.png"
               alt="easy analysis section 4 zoom"
-              className="absolute  w-32 h-20 top-50 -right-10 sm:top-62 sm:-right-1/2"
+              className="absolute  w-32 h-20 lg:w-auto lg:h-auto top-50 -right-10 sm:top-62 sm:-right-1/2"
             />
             <img
               src="/images/function-5.png"
               alt="easy analysis section 5 zoom"
-              className="absolute  w-32 h-20 bottom-10 -left-10 sm:-bottom-10 sm:-left-1/2"
+              className="absolute  w-32 h-20 lg:w-auto lg:h-auto bottom-10 -left-10 sm:-bottom-10 sm:-left-1/2"
             />
           </div>
         </div>

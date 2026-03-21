@@ -31,20 +31,26 @@ const Hero = () => {
                 className="w-30 h-30 sm:w-40 sm:h-40"
               />
             </div>
-            <button className="w-30 h-12 rounded-xl overflow-hidden">
+            <a
+              href="https://play.google.com/store/apps/details?id=com.BlackwellGlobalInvestmentsUKLimited.pelican"
+              className="w-30 h-12 rounded-xl overflow-hidden"
+            >
               <img
                 src="/images/google-play.jpg"
                 alt="Submit Button"
                 className="w-full h-full object-fit  "
               />
-            </button>
-            <button className="w-30 h-12 rounded-xl overflow-hidden">
+            </a>
+            <a
+              href="https://apps.apple.com/au/app/blackwell-invest/id1666036351"
+              className="w-30 h-12 rounded-xl overflow-hidden"
+            >
               <img
                 src="/images/app-store.jpg"
                 alt="Submit Button"
                 className="w-full h-full    object-fit"
               />
-            </button>
+            </a>
           </div>
 
           {/* divider */}
@@ -62,15 +68,15 @@ const Hero = () => {
               master traders! Whether you are a pro or beginner, you can now
               trade quicker and more confidently.
             </span>
-            <div className="flex flex-wrap my-4 [&>span]:border [&>span]:p-2 [&>span]:rounded-md gap-4">
+            <div className="flex flex-wrap my-4 [&>span]:border [&>span]:p-2 [&>span]:rounded-md gap-4 text-white">
               <span className="border-amber-200">Forex</span>
               <span className="border-[#df7c1e]">Precious Metals</span>
               <span className="border-red-500">Oil</span>
               <span className="border-blue-300">Indices</span>
             </div>
-            <button className="rounded-md bg-[#df7c1e] text-white p-2 min-w-40">
+            <a href="" className="rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 min-w-40">
               Register Now
-            </button>
+            </a>
             <div className="h-2" />
             <span className="text-white italic">
               When you invest, your vapital is at risk. Be prudent

@@ -41,6 +41,7 @@ const TradeLikePro = () => {
       {/* divider */}
       <div className="h-4" />
 
+      {/* overall content */}
       <div className="grid grid-cols-12 w-full lg:w-[80vw] gap-2 mx-auto text-center">
         {/* desktop view */}
         {/* left side */}
@@ -68,13 +69,13 @@ const TradeLikePro = () => {
           })}
         </div>
         {/* right side */}
-        <div className="hidden lg:flex lg:col-span-6 lg:w-full lg:max-h-128 rounded-xl lg:border-orange-400 lg:p-8">
+        <div className="hidden lg:flex lg:col-span-6 lg:max-h-128 rounded-xl lg:border-orange-400 lg:p-8">
           {activeTabData && (
             <img
               key={activeTabId}
               src={TradeData.find((t) => t.id === activeTabId)?.imgSrc}
               alt="trade step image"
-              className="max-w-100 h-full mx-auto object-contain transition-all duration-500"
+              className="w-full h-full mx-auto object-contain transition-all duration-500"
             />
           )}
         </div>
@@ -118,6 +119,31 @@ const TradeLikePro = () => {
             );
           })}
         </div>
+      </div>
+
+      <div className="h-4" />
+      {/* bottom part app installation */}
+      <div className="relative flex w-full gap-2 lg:gap-4 justify-center items-center">
+        <a
+          href="https://play.google.com/store/apps/details?id=com.BlackwellGlobalInvestmentsUKLimited.pelican"
+          className="w-30 h-12 rounded-xl overflow-hidden"
+        >
+          <img
+            src="/images/google-play.jpg"
+            alt="Submit Button"
+            className="w-full h-full object-fit  "
+          />
+        </a>
+        <a
+          href="https://apps.apple.com/au/app/blackwell-invest/id1666036351"
+          className="w-30 h-12 rounded-xl overflow-hidden"
+        >
+          <img
+            src="/images/app-store.jpg"
+            alt="Submit Button"
+            className="w-full h-full    object-fit"
+          />
+        </a>
       </div>
     </section>
   );
