@@ -1,7 +1,7 @@
 const Hero = () => {
   return (
     <section className="font-atrotis p-2 sm:pt-10 lg:pt-20 flex items-center justify-center">
-      <div className=" grid grid-cols-12 lg:grid-cols-12 p-2 sm:py-10 lg:pt-20 gap-8 ">
+      <div className=" grid grid-cols-12 lg:grid-cols-12 p-2 sm:py-10 lg:pt-20 gap-8 sm:p-10 xl:p-0 xl:w-[80vw]">
         {/* left section */}
         <div className="w-full aspect-auto xl:aspect-9/12 2xl:aspect-auto col-span-12 sm:col-span-6 order-2 sm:order-1">
           <img

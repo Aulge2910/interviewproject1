@@ -118,7 +118,7 @@ const goPrev = () => {
       <div className="w-full 2xl:w-[80vw] p-8 mx-auto">
         <div
           ref={ContainerRef}
-          className="w-full relative h-100 sm:h-120 overflow-hidden"
+          className="w-full relative h-100 overflow-hidden"
         >
           <button
             onClick={goPrev}
