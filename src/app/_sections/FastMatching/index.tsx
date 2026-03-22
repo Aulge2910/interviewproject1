@@ -1,80 +1,52 @@
-const FastMatching = () => {
+const FastMatchingData = [
+  { id: "1", label: "Spotlight" },
+  { id: "2", label: "Top Strategies" },
+  { id: "3", label: "Low Drawdown" },
+  { id: "4", label: "Medium Drawdown" },
+  { id: "5", label: "High Drawdown" },
+  { id: "6", label: "New Strategies" },
+];
 
-    return (
-      <section className="w-full min-h-screen flex items-center justify-center p-4">
-        <div className="w-full flex items-center justify-center flex-col">
-          <h3 className="text-light-blue text-3xl font-semibold ">
-            Fast Matching
-          </h3>
-          <div className="w-full grid grid-cols-12">
-            <div className="w-full col-span-12 sm:col-span-6 p-6 flex items-center justify-center sm:justify-end">
-              <div className="relative w-62.5 h-auto overflow-hidden rounded-xl">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/video/mobile-video.mp4" type="video/mp4" />
-                </video>
-              </div>
-            </div>
-            <div className="w-full col-span-12 sm:col-span-6 flex items-center sm:items-start justify-center flex-col gap-4">
-              <div className="flex gap-2">
-                <img
-                  src="/images/list-icon.png"
-                  alt="list icon"
-                  className="w-16 h-6"
-                />
-                <span className="text-white text-2xl">Spotlight</span>
-              </div>
-              <div className="flex gap-2">
-                <img
-                  src="/images/list-icon.png"
-                  alt="list icon"
-                  className="w-16 h-6"
-                />
-                <span className="text-white text-2xl">Top Strategies</span>
-              </div>
-              <div className="flex gap-2">
-                <img
-                  src="/images/list-icon.png"
-                  alt="list icon"
-                  className="w-16 h-6"
-                />
-                <span className="text-white text-2xl">Low Drawdown</span>
-              </div>
-              <div className="flex gap-2">
-                <img
-                  src="/images/list-icon.png"
-                  alt="list icon"
-                  className="w-16 h-6"
-                />
-                <span className="text-white text-2xl">Medium Drawdown</span>
-              </div>
-              <div className="flex gap-2">
-                <img
-                  src="/images/list-icon.png"
-                  alt="list icon"
-                  className="w-16 h-6"
-                />
-                <span className="text-white text-2xl">High Drawdown</span>
-              </div>{" "}
-              <div className="flex gap-2">
-                <img
-                  src="/images/list-icon.png"
-                  alt="list icon"
-                  className="w-16 h-6"
-                />
-                <span className="text-white text-2xl">New Strategies</span>
-              </div>
+const FastMatching = () => {
+  return (
+    <section className="flex items-center justify-center max-w-380 mx-auto">
+      <div className="w-full flex items-center justify-center flex-col p-4 gap-2">
+        <h3 className="text-light-blue text-3xl font-semibold ">
+          Fast Matching
+        </h3>
+        <div className="w-full grid grid-cols-12">
+          {/* video at the left part */}
+          <div className="w-full flex items-center justify-center col-span-12 sm:col-span-6 sm:justify-end p-4">
+            <div className="relative w-62.5 h-auto overflow-hidden rounded-xl">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                className="w-full h-full object-cover"
+              >
+                <source src="/video/mobile-video.mp4" type="video/mp4" />
+              </video>
             </div>
           </div>
+          {/* text at the right part */}
+          <div className="w-full flex items-center justify-center flex-col col-span-12 sm:col-span-6 sm:items-start gap-4 p-4">
+            {FastMatchingData.map((item, index) => (
+              <div key={item.id} className="flex gap-2">
+                <img
+                  src="/images/list-icon.png"
+                  alt="list icon"
+                  className="w-16 h-6"
+                />
+                <span className="text-white text-2xl">{item.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
-    );
-}
+      </div>
+    </section>
+  );
+};
 
 export default FastMatching;
