@@ -1,16 +1,21 @@
 const EasyAnalysis = () => {
 
     return (
-      <section className="w-full min-h-screen flex items-center justify-center p-4">
-        <div className="w-full flex items-center justify-center flex-col gap-4">
-          <h3 className="text-light-blue text-3xl font-semibold ">
-            Easy Analysis
-          </h3>
-          <span className="w-full  sm:w-[60vw] text-center text-gold text-2xl">
-            Instant clarity on the Masters' profile. Get a snapshot of their
-            trade history, profitability, risk and portfolio all in one place.
-          </span>
+      <section className="flex items-center justify-center max-w-380 mx-auto">
+        <div className="w-full flex items-center justify-center flex-col gap-4 p-4">
+          
+          {/* top section */}
+          <div className="w-full flex items-center justify-center flex-col gap-4 p-4">
+            <h3 className="text-light-blue text-3xl font-semibold ">
+              Easy Analysis
+            </h3>
+            <span className="w-full  sm:w-[60vw] text-center text-gold text-2xl">
+              Instant clarity on the Masters' profile. Get a snapshot of their
+              trade history, profitability, risk and portfolio all in one place.
+            </span>
+          </div>
 
+          {/* absoluted image part */}
           <div className="relative w-50 sm:w-62.5">
             <img src="/images/mobile-2.png" alt="easy analysis" className="" />
             <img
