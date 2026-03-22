@@ -50,21 +50,25 @@ const EnrollNow = () => {
   };
 
   return (
-    <section className="w-full h-full text-center mx-auto lg:w-[80vw]">
+    <section className="w-full h-full text-center mx-auto max-w-380">
       {/* top title of section */}
-      <div className="w-full relative flex flex-col justify-end items-center overflow-hidden min-h-150 sm:min-h-200  sm:max-h-200">
-        <img
-          src="/images/bg-3.png"
-          alt="bg layer 1"
-          className="-z-10 w-full aspect-4/12 absolute inset-0 object-cover lg:object-[center_30px]"
-        />
+
+      {/* parent wrapper here */}
+      <div
+        className={`w-full relative flex flex-col justify-end items-center 
+        h-180 sm:h-165 xl:h-185 overflow-hidden 
+        bg-[url('/images/bg-3.png')] bg-no-repeat bg-size-[160%] bg-top`}
+      >
+
+        {/* title */}
         <h3 className=" text-3xl text-light-blue font-semibold">Enquire Now</h3>
 
+        {/* enquiry form */}
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full grid grid-cols-12 gap-4 px-4 sm:px-20 py-4 sm:py-10 min-h-112"
+          className="w-full grid grid-cols-12 gap-4 py-8  px-10 sm:px-20  min-h-112"
         >
-          <div className="w-full col-span-6">
+          <div className="w-full col-span-12 sm:col-span-6">
             <input
               {...register("name")}
               placeholder="Name"
@@ -76,7 +80,7 @@ const EnrollNow = () => {
               </span>
             )}
           </div>{" "}
-          <div className="w-full col-span-6">
+          <div className="w-full col-span-12 sm:col-span-6">
             <input
               {...register("email")}
               placeholder="Email"
@@ -88,7 +92,7 @@ const EnrollNow = () => {
               </span>
             )}
           </div>
-          <div className="w-full col-span-6">
+          <div className="w-full col-span-12 sm:col-span-6">
             <input
               {...register("mobile")}
               placeholder="Mobile No"
@@ -100,7 +104,7 @@ const EnrollNow = () => {
               </span>
             )}
           </div>{" "}
-          <div className="w-full col-span-6">
+          <div className="w-full col-span-12 sm:col-span-6">
             <input
               {...register("country")}
               placeholder="Country of Residence"
