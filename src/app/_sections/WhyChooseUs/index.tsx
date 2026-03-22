@@ -85,7 +85,7 @@ const WhyChooseUs = () => {
       </div>
 
       {/* divider */}
-      <div className="h-4" />
+      <div className="h-8" />
     </section>
   );
 };

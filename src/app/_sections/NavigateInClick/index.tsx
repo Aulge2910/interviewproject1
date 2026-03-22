@@ -57,15 +57,16 @@ const NavigateInClick = () => {
   const currentData = NavigateData.find((item) => item.id === activeTab);
 
   return (
-    <section className="w-full h-full text-center my-10 lg:w-[80vw] mx-auto">
+    <section className="w-full h-full text-center max-w-380 mx-auto">
       {/* top title of section */}
-      <div className="w-full flex justify-center items-center">
+      <div className="w-full flex justify-center items-center p-4">
         <h3 className=" text-3xl text-light-blue font-semibold">
           Navigate Our App in 5 Clicks
         </h3>
       </div>
       <div className="h-6" />
 
+      {/* nav tab item mapping here */}
       <div className="w-full flex">
         <ul className="w-full flex">
           {NavigateData.map((item, index) => {
@@ -86,7 +87,9 @@ const NavigateInClick = () => {
           })}
         </ul>
       </div>
-      <div className="bg-[#f2df79] w-full sm:h-92 flex flex-col sm:grid sm:grid-cols-12 items-center justify-center text-start">
+
+      {/* the relevant data will be shown here based on the clicked tab */}
+      <div className="bg-[#f2df79] w-full flex flex-col items-center justify-center text-start sm:grid sm:grid-cols-12">
         {currentData ? (
           <div className="sm:col-span-7 p-10 flex flex-col gap-4 transition-all duration-500 ">
             <h3 className="text-dark-blue font-semibold text-xl">
@@ -98,20 +101,24 @@ const NavigateInClick = () => {
           ""
         )}
 
+        {/* display the image part */}
         <div className="sm:col-span-5 p-10">
           {currentData ? (
-            <img src={currentData.imgSrc} alt="" className="" />
+            <img src={currentData.imgSrc} alt="" className="object-contain" />
           ) : (
             ""
           )}
         </div>
       </div>
+
+
       <div className="h-4" />
-      <div className="relative flex w-full gap-2 lg:gap-4 justify-center items-center">
-         
+
+      {/* the app installation here */}
+      <div className="relative flex w-full gap-4 justify-center items-center">
         <a
           href="https://play.google.com/store/apps/details?id=com.BlackwellGlobalInvestmentsUKLimited.pelican"
-          className="w-30 h-12 rounded-xl overflow-hidden"
+          className="w-30 h-10 rounded-xl overflow-hidden"
         >
           <img
             src="/images/google-play.jpg"
@@ -121,7 +128,7 @@ const NavigateInClick = () => {
         </a>
         <a
           href="https://apps.apple.com/au/app/blackwell-invest/id1666036351"
-          className="w-30 h-12 rounded-xl overflow-hidden"
+          className="w-30 h-10 rounded-xl overflow-hidden"
         >
           <img
             src="/images/app-store.jpg"
