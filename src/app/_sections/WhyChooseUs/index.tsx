@@ -46,8 +46,7 @@ const WhyChooseUs = () => {
         {Reason.map((item, index) => (
           <div
             key={item.id}
-            className="w-full bg-white border rounded-2xl items-center justify-start sm:justify-center 
-            p-2 sm:grid flex flex-wrap gap-3 sm:gap-8 sm:grid-cols-[auto_20%_50%]"
+            className="w-full bg-white border rounded-2xl items-center justify-start sm:justify-center p-2 sm:grid flex flex-wrap gap-3 sm:gap-8 sm:grid-cols-[auto_20%_50%]"
           >
             <div className="w-20 h-16">
               <img
