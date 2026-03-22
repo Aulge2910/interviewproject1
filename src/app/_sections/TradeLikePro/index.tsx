@@ -26,6 +26,7 @@ const TradeLikePro = () => {
 
   return (
     <section className="w-full h-full text-center max-w-380 mx-auto">
+      <div className="h-8 w-full"/>
       {/* top title of section */}
       <div className="relative w-full flex flex-col justify-end items-center overflow-hidden h-100 sm:h-120 ">
         <img
@@ -134,7 +135,7 @@ const TradeLikePro = () => {
       <div className="relative flex w-full gap-4 justify-center items-center">
         <a
           href="https://play.google.com/store/apps/details?id=com.BlackwellGlobalInvestmentsUKLimited.pelican"
-          className="w-30 h-12 rounded-xl overflow-hidden"
+          className="w-30 h-10 rounded-xl overflow-hidden"
         >
           <img
             src="/images/google-play.jpg"
@@ -144,12 +145,12 @@ const TradeLikePro = () => {
         </a>
         <a
           href="https://apps.apple.com/au/app/blackwell-invest/id1666036351"
-          className="w-30 h-12 rounded-xl overflow-hidden"
+          className="w-30 h-10 rounded-xl overflow-hidden"
         >
           <img
             src="/images/app-store.jpg"
             alt="Submit Button"
-            className="w-full h-full    object-fit"
+            className="w-full h-full object-fit"
           />
         </a>
       </div>

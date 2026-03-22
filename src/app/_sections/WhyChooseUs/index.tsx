@@ -30,54 +30,61 @@ const Reason = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="w-full h-full text-center mx-auto lg:w-[80vw]">
+    <section className="w-full h-full text-center max-w-380 mx-auto">
+      <div className="h-8 w-full" />
       {/* top title of section */}
-      <div className="w-full relative flex justify-center items-end h-60 lg:h-100 overflow-hidden ">
+      <div className="relative w-full flex flex-col justify-end items-center overflow-hidden h-100 sm:h-120 ">
         <img
           src="/images/bg-2.png"
           alt="bg layer 1"
-          className="-z-10 w-full aspect-12/6 absolute inset-0 object-cover object-[center_-20px]"
+          className="absolute inset-0 w-full h-full aspect-auto object-cover object-[center_120px] scale-170 origin-center"
         />
-        <h3 className=" text-3xl text-light-blue font-semibold">
+        <h3 className="relative text-3xl text-light-blue font-semibold">
           Why Choose Us ?
         </h3>
       </div>
-      <div className="flex flex-col w-full p-8 gap-2">
+
+      {/* mapping of item data */}
+      <div className="flex flex-col w-full sm:w-[80%] gap-2 mx-auto p-4">
         {Reason.map((item, index) => (
           <div
             key={item.id}
-            className="w-full bg-white border rounded-2xl items-center justify-start sm:justify-center p-2 sm:grid flex flex-wrap gap-3 sm:gap-8 sm:grid-cols-[auto_20%_50%]"
+            className="w-full bg-white border rounded-2xl items-center justify-start p-4 sm:grid flex flex-wrap gap-3 sm:grid-cols-[auto_20%_auto]"
           >
-            <div className="w-20 h-16">
+
+            {/* first icon in row */}
+            <div className="w-20 h-full">
               <img
                 src={item.imgSrc}
                 alt="icon of reason of choosing us"
                 className=""
               />
             </div>
+            {/* highlighted tutle */}
             <div className="">
               <span className="text-xl font-semibold text-dark-blue">
                 {item.label}
               </span>
             </div>
+            {/* description of title */}
             <div className="col-span-2 sm:col-span-1">
               <span className="">{item.text}</span>
             </div>
+
           </div>
         ))}
         <div className="h-4" />
-
-        <a
-          href=""
-          className="rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 min-w-40"
-        >
-          Register Now
-        </a>
+        <div className="w-full flex items-center justify-center">
+          <a
+            href=""
+            className="rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 min-w-40"
+          >
+            Register Now
+          </a>
+        </div>
       </div>
 
       {/* divider */}
-      <div className="h-4" />
-
       <div className="h-4" />
     </section>
   );

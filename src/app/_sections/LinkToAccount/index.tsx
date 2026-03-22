@@ -54,21 +54,21 @@ const LinkToAccount = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalSlides = LinkStepData.length;
 
-const [displayCount, setDisplayCount] = useState(4);
+  const [displayCount, setDisplayCount] = useState(4);
   const isAtStart = currentIndex === 0;
   const isAtEnd = currentIndex >= LinkStepData.length - displayCount;
 
-const goNext = () => {
-  if (!isAtEnd) {
-    setCurrentIndex((prev) => prev + 1);
-  }
-};
+  const goNext = () => {
+    if (!isAtEnd) {
+      setCurrentIndex((prev) => prev + 1);
+    }
+  };
 
-const goPrev = () => {
-  if (!isAtStart) {
-    setCurrentIndex((prev) => prev - 1);
-  }
-};
+  const goPrev = () => {
+    if (!isAtStart) {
+      setCurrentIndex((prev) => prev - 1);
+    }
+  };
 
   useGSAP(() => {
     if (!ContainerRef || !SliderRef) return;
@@ -80,8 +80,6 @@ const goPrev = () => {
       ease: "power2.out",
     });
   }, [currentIndex, displayCount]);
-
-  
 
   useEffect(() => {
     const updateCount = () => {
@@ -99,27 +97,29 @@ const goPrev = () => {
       }
     };
 
-    updateCount(); 
+    updateCount();
     window.addEventListener("resize", updateCount);
     return () => window.removeEventListener("resize", updateCount);
   }, []);
 
   return (
-    <section className="w-full h-full text-center my-10">
+    <section className="w-full h-full text-center max-w-380 mx-auto">
       {/* top title of section */}
-      <div className="w-full flex justify-center items-center">
-        <h3 className=" text-3xl text-light-blue font-semibold">
+      <div className="w-full flex justify-center items-center p-4">
+        <h3 className="text-3xl text-light-blue font-semibold">
           How to Link MT4 Account
         </h3>
       </div>
 
       {/* carousel part */}
+      <div className="w-full p-4">
 
-      <div className="w-full 2xl:w-[80vw] p-8 mx-auto">
+        {/* parent div = outer container */}
         <div
           ref={ContainerRef}
           className="w-full relative h-100 overflow-hidden"
         >
+          {/* prev button */}
           <button
             onClick={goPrev}
             className={`absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#1d295c] text-white z-100 ${
@@ -130,6 +130,8 @@ const goPrev = () => {
           >
             {"<"}
           </button>
+
+          {/* next button */}
           <button
             onClick={goNext}
             className={`absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-[#1d295c] text-white z-100 ${
@@ -140,16 +142,18 @@ const goPrev = () => {
           >
             {">"}
           </button>
+
+          {/* slider part of carousel */}
           <ul ref={SliderRef} className="w-full flex flex-nowrap h-full">
             {LinkStepData.map((item, index) => (
               <li
                 key={item.id}
-                className="flex flex-col justify-center items-center shrink-0 item-card w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 border rounded-2xl p-4 border-amber-400"
+                className="flex flex-col justify-center items-center shrink-0 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 border rounded-2xl p-4 border-amber-400"
               >
                 <img
                   src={item.imgSrc}
                   alt={`step ${item.id} to link to MT4 account`}
-                  className="w-full max-w-62.5 sm:max-w-none sm:w-full mx-auto object-contain"
+                  className="w-full max-w-80 mx-auto object-contain"
                 />
                 <span className="text-white text-center">
                   {item.description}
@@ -160,10 +164,11 @@ const goPrev = () => {
         </div>
       </div>
 
+      {/* register button */}
       <div className="w-full flex justify-center items-center">
         <a
           href=""
-          className="rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 min-w-40"
+          className="rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 w-40"
         >
           Register Now
         </a>

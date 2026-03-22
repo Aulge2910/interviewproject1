@@ -82,7 +82,7 @@ const Hero = () => {
               <span className="border-red-500">Oil</span>
               <span className="border-blue-300">Indices</span>
             </div>
-            <a href="" className="rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 min-w-40">
+            <a href="" className="text-center rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 min-w-40">
               Register Now
             </a>
             <div className="h-2" />
