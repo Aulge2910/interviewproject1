@@ -25,15 +25,15 @@ const TradeLikePro = () => {
   const activeTabData = TradeData.find((tab) => tab.id === activeTabId);
 
   return (
-    <section className="w-full h-full text-center">
+    <section className="w-full h-full text-center max-w-380 mx-auto">
       {/* top title of section */}
-      <div className="w-full relative flex justify-center items-end h-60 lg:h-100 overflow-hidden">
+      <div className="relative w-full flex flex-col justify-end items-center overflow-hidden h-100 sm:h-120 ">
         <img
           src="/images/bg-1.png"
           alt="bg layer 1"
-          className="-z-10 w-full aspect-12/6 absolute inset-0 object-cover object-[center_-20px]"
+          className="absolute inset-0 w-full h-full aspect-auto object-cover object-[center_120px] scale-250 origin-center"
         />
-        <h3 className=" text-3xl text-light-blue font-semibold">
+        <h3 className="relative text-3xl text-light-blue font-semibold">
           Trade Like a Pro in Minutes
         </h3>
       </div>
@@ -42,10 +42,14 @@ const TradeLikePro = () => {
       <div className="h-4" />
 
       {/* overall content */}
-      <div className="grid grid-cols-12 w-full lg:w-[80vw] gap-2 mx-auto text-center">
+      <div className="grid grid-cols-12 w-full text-center">
         {/* desktop view */}
         {/* left side */}
-        <div className="w-full h-full hidden lg:flex lg:flex-col gap-2 lg:col-span-6 [&>div:nth-child(odd)]:border-yellow-200 [&>div:nth-child(odd)_span:first-child]:text-yellow-400  [&>div:nth-child(even)]:border-orange-400 [&>div:nth-child(even)_span:first-child]:text-orange-400 p-4">
+        <div
+          className={`w-full h-full hidden gap-2 lg:flex lg:flex-col lg:col-span-6 p-4
+        [&>div:nth-child(odd)]:border-yellow-200 [&>div:nth-child(odd)_span:first-child]:text-yellow-400  
+        [&>div:nth-child(even)]:border-orange-400 [&>div:nth-child(even)_span:first-child]:text-orange-400`}
+        >
           {TradeData.map((item, index) => {
             const isActive = item.id === activeTabId;
             const isOdd = (index + 1) % 2 !== 0;
@@ -53,14 +57,14 @@ const TradeLikePro = () => {
               <div
                 key={item.id}
                 onClick={() => setActiveTabId(item.id)}
-                className={`h-full w-full p-8 relative border rounded-xl flex justify-center items-center transition-all duration-500 text-white  
+                className={`h-full w-full p-4 relative border rounded-xl flex justify-center items-center transition-all duration-500 text-white  
                     ${isActive ? "bg-[#2e4397] shadow-lg text-2xl font-semibold" : ""}
                       ${isActive && isOdd ? "[&>span:last-child]:text-yellow-400 border-gold " : ""}
                         ${isActive && !isOdd ? "[&>span:last-child]:text-orange-400 border-gold bg-[#2e4397] shadow-lg text-2xl font-semibold" : ""}
                     
                     `}
               >
-                <span className="absolute  sm:left-4 text-4xl italic">
+                <span className="absolute sm:left-4 text-4xl italic">
                   {item.id}
                 </span>
                 <span className="">{item.label}</span>
@@ -69,7 +73,7 @@ const TradeLikePro = () => {
           })}
         </div>
         {/* right side */}
-        <div className="hidden lg:flex lg:col-span-6 lg:max-h-128 rounded-xl lg:border-orange-400 lg:p-8">
+        <div className="w-full hidden rounded-xl p-4 lg:flex lg:col-span-6 lg:max-h-128 lg:border-orange-400">
           {activeTabData && (
             <img
               key={activeTabId}
@@ -81,7 +85,11 @@ const TradeLikePro = () => {
         </div>
 
         {/* mobile view */}
-        <div className="w-full h-full flex flex-col col-span-12 lg:hidden gap-2 lg:col-span-6 [&>div:nth-child(odd)]:border-yellow-200 [&>div:nth-child(odd)_span:first-child]:text-yellow-400  [&>div:nth-child(even)]:border-orange-400 [&>div:nth-child(even)_span:first-child]:text-orange-400 p-4">
+        <div
+          className={`w-full h-full flex flex-col col-span-12 p-4 lg:hidden gap-2 lg:col-span-6 
+        [&>div:nth-child(odd)]:border-yellow-200 [&>div:nth-child(odd)_span:first-child]:text-yellow-400 
+         [&>div:nth-child(even)]:border-orange-400 [&>div:nth-child(even)_span:first-child]:text-orange-400`}
+        >
           {TradeData.map((item, index) => {
             const isActive = item.id === activeTabId;
             const isOdd = (index + 1) % 2 !== 0;
@@ -89,10 +97,10 @@ const TradeLikePro = () => {
               <div
                 key={item.id}
                 onClick={() => setActiveTabId(item.id)}
-                className="w-full flex flex-col gap-3 lg:hidden"
+                className="w-full flex flex-col lg:hidden"
               >
                 <div
-                  className={` w-full p-8 relative border rounded-xl flex justify-center items-center transition-all duration-500 text-white  
+                  className={` w-full p-4 relative border rounded-xl flex justify-center items-center transition-all duration-500 text-white  
                     ${isActive ? "bg-[#2e4397] shadow-lg font-semibold border-gold " : ""}
                       ${isActive && isOdd ? "[&>span:last-child]:text-yellow-400" : ""}
                         ${isActive && !isOdd ? "[&>span:last-child]:text-orange-400" : ""}
@@ -123,7 +131,7 @@ const TradeLikePro = () => {
 
       <div className="h-4" />
       {/* bottom part app installation */}
-      <div className="relative flex w-full gap-2 lg:gap-4 justify-center items-center">
+      <div className="relative flex w-full gap-4 justify-center items-center">
         <a
           href="https://play.google.com/store/apps/details?id=com.BlackwellGlobalInvestmentsUKLimited.pelican"
           className="w-30 h-12 rounded-xl overflow-hidden"
