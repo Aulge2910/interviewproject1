@@ -1,7 +1,7 @@
 const Hero = () => {
   return (
     <section className="flex items-center justify-center max-w-380 mx-auto">
-      <div className="w-full grid grid-cols-12 gap-4 p-4">
+      <div className="w-full grid grid-cols-12 gap-4 p-4 sm:w-[80%] mx-auto">
         {/* left section */}
         <div className="w-full aspect-auto col-span-12 sm:col-span-6 order-2 sm:order-1">
           <img
