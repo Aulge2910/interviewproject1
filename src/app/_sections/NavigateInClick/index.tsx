@@ -66,51 +66,52 @@ const NavigateInClick = () => {
       </div>
       <div className="h-6" />
 
-      {/* nav tab item mapping here */}
-      <div className="w-full flex">
-        <ul className="w-full flex">
-          {NavigateData.map((item, index) => {
-            const isActive = activeTab === item.id;
-            return (
-              <li
-                className=""
-                key={item.id}
-                onClick={() => setActiveTab(item.id)}
-              >
-                <img
-                  src={isActive ? item.iconActiveSrc : item.iconSrc}
-                  alt=""
-                  className="w-28.5 h-12 bg-white rounded-t-2xl object-contain"
-                />
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <div className="w-full sm:w-[80%] mx-auto">
+        {/* nav tab item mapping here */}
+        <div className="w-full flex">
+          <ul className="w-full flex">
+            {NavigateData.map((item, index) => {
+              const isActive = activeTab === item.id;
+              return (
+                <li
+                  className=""
+                  key={item.id}
+                  onClick={() => setActiveTab(item.id)}
+                >
+                  <img
+                    src={isActive ? item.iconActiveSrc : item.iconSrc}
+                    alt=""
+                    className="w-28.5 h-12 bg-white rounded-t-2xl object-contain"
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
 
-      {/* the relevant data will be shown here based on the clicked tab */}
-      <div className="bg-[#f2df79] w-full flex flex-col items-center justify-center text-start sm:grid sm:grid-cols-12">
-        {currentData ? (
-          <div className="sm:col-span-7 p-10 flex flex-col gap-4 transition-all duration-500 ">
-            <h3 className="text-dark-blue font-semibold text-xl">
-              {currentData.label}
-            </h3>
-            <span>{currentData.description}</span>
-          </div>
-        ) : (
-          ""
-        )}
-
-        {/* display the image part */}
-        <div className="sm:col-span-5 p-10">
+        {/* the relevant data will be shown here based on the clicked tab */}
+        <div className="bg-[#f2df79] w-full flex flex-col items-center justify-center text-start sm:grid sm:grid-cols-12">
           {currentData ? (
-            <img src={currentData.imgSrc} alt="" className="object-contain" />
+            <div className="sm:col-span-7 p-10 flex flex-col gap-4 transition-all duration-500 ">
+              <h3 className="text-dark-blue font-semibold text-xl">
+                {currentData.label}
+              </h3>
+              <span>{currentData.description}</span>
+            </div>
           ) : (
             ""
           )}
+
+          {/* display the image part */}
+          <div className="sm:col-span-5 p-10">
+            {currentData ? (
+              <img src={currentData.imgSrc} alt="" className="object-contain" />
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
-
 
       <div className="h-4" />
 

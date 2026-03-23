@@ -43,7 +43,7 @@ const TradeLikePro = () => {
       <div className="h-4" />
 
       {/* overall content */}
-      <div className="grid grid-cols-12 w-full text-center">
+      <div className="grid grid-cols-12 w-full sm:w-[80%] mx-auto text-center">
         {/* desktop view */}
         {/* left side */}
         <div
@@ -68,7 +68,7 @@ const TradeLikePro = () => {
                 <span className="absolute sm:left-4 text-4xl italic">
                   {item.id}
                 </span>
-                <span className="">{item.label}</span>
+                <span className="max-w-[80%]">{item.label}</span>
               </div>
             );
           })}
@@ -110,7 +110,7 @@ const TradeLikePro = () => {
                   <span className="absolute left-4 text-4xl italic">
                     {item.id}
                   </span>
-                  <span className="">{item.label}</span>
+                  <span className="max-w-[80%]">{item.label}</span>
                 </div>
                 <div
                   className={`w-full lg:hidden overflow-hidden transition-all duration-700 ease-in-out

@@ -59,7 +59,6 @@ const EnrollNow = () => {
         h-180 sm:h-165 xl:h-185 overflow-hidden 
         bg-[url('/images/bg-3.png')] bg-no-repeat bg-size-[160%] bg-top`}
       >
-
         {/* title */}
         <h3 className=" text-3xl text-light-blue font-semibold">Enquire Now</h3>
 
@@ -75,9 +74,7 @@ const EnrollNow = () => {
               className="border border-yellow-200 p-4 focus:border-yellow-400 w-full rounded-md"
             />
             {errors.name && (
-              <span className="text-red-500 text-xs">
-                {errors.name.message}
-              </span>
+              <span className="text-white">{errors.name.message}</span>
             )}
           </div>{" "}
           <div className="w-full col-span-12 sm:col-span-6">
@@ -87,9 +84,7 @@ const EnrollNow = () => {
               className="border border-yellow-200 p-4 focus:border-yellow-400 w-full"
             />
             {errors.email && (
-              <span className="text-red-500 text-xs">
-                {errors.email.message}
-              </span>
+              <span className="text-white">{errors.email.message}</span>
             )}
           </div>
           <div className="w-full col-span-12 sm:col-span-6">
@@ -99,9 +94,7 @@ const EnrollNow = () => {
               className="border border-yellow-200 p-4 focus:border-yellow-400 w-full rounded-md"
             />
             {errors.mobile && (
-              <span className="text-red-500 text-xs">
-                {errors.mobile.message}
-              </span>
+              <span className="text-white">{errors.mobile.message}</span>
             )}
           </div>{" "}
           <div className="w-full col-span-12 sm:col-span-6">
@@ -111,9 +104,7 @@ const EnrollNow = () => {
               className="border border-yellow-200 p-4 focus:border-yellow-400 w-full rounded-md"
             />{" "}
             {errors.country && (
-              <span className="text-red-500 text-xs">
-                {errors.country.message}
-              </span>
+              <span className="text-white">{errors.country.message}</span>
             )}
           </div>
           <div className="w-full col-span-12">
@@ -124,11 +115,10 @@ const EnrollNow = () => {
               className="border border-yellow-200 p-4 focus:border-yellow-400 w-full rounded-md h-full"
             />
             {errors.message && (
-              <span className="text-red-500 text-xs">
-                {errors.message.message}
-              </span>
+              <span className="text-white">{errors.message.message}</span>
             )}
           </div>
+          <div className="h-4" />
           <div className="col-span-12 flex items-center justify-center">
             <button
               disabled={isSubmitting}
