@@ -13,17 +13,15 @@ import Modal from "./_components/Modal";
 export default function Home() {
   return (
     <div className="w-full">
-   
-      <CountDown targetDate="2026-4-23"/>
+      <CountDown targetDate="2026-4-23" />
       <Hero />
-      <FastMatching/>
-      <EasyAnalysis/>
-      <TradeLikePro/>
-      <LinkToAccount/>
-      <WhyChooseUs/>
-      <NavigateInClick/>
-      <EnrollNow/>
-      
+      <FastMatching />
+      <EasyAnalysis />
+      <TradeLikePro />
+      <LinkToAccount />
+      <WhyChooseUs />
+      <NavigateInClick />
+      <EnrollNow />
     </div>
   );
 }

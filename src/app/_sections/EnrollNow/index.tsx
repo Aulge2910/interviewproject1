@@ -55,8 +55,8 @@ const EnrollNow = () => {
 
       {/* parent wrapper here */}
       <div
-        className={`w-full relative flex flex-col justify-end items-center 
-        h-180 sm:h-165 xl:h-185 overflow-hidden 
+        className={`w-full sm:w-[80%] relative flex flex-col justify-end items-center 
+        h-180 sm:h-165 xl:h-185 overflow-hidden mx-auto 
         bg-[url('/images/bg-3.png')] bg-no-repeat bg-size-[160%] bg-top`}
       >
         {/* title */}

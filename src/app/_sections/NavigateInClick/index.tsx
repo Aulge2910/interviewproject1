@@ -57,7 +57,7 @@ const NavigateInClick = () => {
   const currentData = NavigateData.find((item) => item.id === activeTab);
 
   return (
-    <section className="w-full h-full text-center max-w-380 mx-auto">
+    <section className="w-full h-full text-center max-w-380 mx-auto p-4">
       {/* top title of section */}
       <div className="w-full flex justify-center items-center p-4">
         <h3 className=" text-3xl text-light-blue font-semibold">

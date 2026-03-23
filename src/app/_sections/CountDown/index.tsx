@@ -43,11 +43,11 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
 
   return (
     <section className="w-full max-w-380 bg-[#112a4d]">
-      <div className="lg:w-[80%] lg:p-0 w-full mx-auto flex flex-wrap lg:grid lg:grid-cols-[auto_1fr_auto] items-center justify-between lg:justify-center py-4 gap-4 lg:gap-10">
-        <img src="/images/blackwelllogo3-1.png" alt="" className="order-1" />
+      <div className="lg:w-[80%]  w-full mx-auto flex flex-wrap lg:grid lg:grid-cols-[auto_1fr_auto] items-center justify-between lg:justify-center py-4 gap-4 lg:gap-10">
+        <img src="/images/blackwelllogo3-1.png" alt="" className="order-1 px-4 lg:px-0" />
 
         {/* count down part - middle part */}
-        <div className="bg-[#2196f3] lg:bg-none w-full flex flex-col sm:flex-row gap-4 text-white items-center order-3 lg:order-2 ">
+        <div className=" bg-[#2196f3] lg:bg-transparent w-full flex flex-col sm:flex-row gap-4 text-white items-center order-3 lg:order-2 ">
           <span className="w-30 uppercase text-center">Promotion Ends In</span>
           <div className="flex items-center gap-4 [&>div>span]:text-center [&>div>span:last-child]:text-[10px]">
             <div className="w-auto lg:w-12" />
@@ -80,7 +80,7 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
         </div>
 
         {/* hamburger part for smaller screen */}
-        <div className="flex lg:hidden order-2 ">
+        <div className="flex lg:hidden order-2 px-4">
           <button onClick={() => setIsHamburgerMenuOpen(true)}>
             <IoMenu className="w-8 h-8 text-white" />
           </button>
