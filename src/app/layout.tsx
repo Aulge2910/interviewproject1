@@ -31,11 +31,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="w-full">
-       
-          {" "}
+        <ToastProvider>
           <SmoothScrollerLayout>{children}</SmoothScrollerLayout>
-        {/* <ToastProvider> </ToastProvider> */}
-      
+        </ToastProvider>
       </body>
     </html>
   );

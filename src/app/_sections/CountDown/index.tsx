@@ -8,7 +8,7 @@ import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 import RegisterForm from "@/app/_utils/Register/RegisterForm";
 import Drawer from "@/app/_components/Drawer";
-
+ import Dropdown from "@/app/_components/Dropdown";
 type ModalType = "login" | "register" | null;
 
 const countDownTimer = (targetDate: string) => {
@@ -52,6 +52,7 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
 
   return (
     <section className="w-full max-w-380 bg-[#112a4d]">
+      <div></div>
       <div className="lg:w-[80%]  w-full mx-auto flex flex-wrap lg:grid lg:grid-cols-[auto_1fr_auto] items-center justify-between lg:justify-center py-4 gap-4 lg:gap-10">
         <img
           src="/images/blackwelllogo3-1.png"
@@ -111,7 +112,7 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
             {/* drawer content*/}
             <div className="flex flex-col gap-6 p-6 items-start">
               <button
-            onClick={() => setActiveModal("register")}
+                onClick={() => setActiveModal("register")}
                 className="text-sm uppercase text-center rounded-4xl bg-[#ea6723] hover:bg-[#f88921] text-white p-2 min-w-full"
               >
                 Register Now
@@ -122,7 +123,7 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
                 className="flex items-center gap-2 cursor-pointer"
                 onClick={() => {
                   setIsHamburgerMenuOpen(false);
-                   setActiveModal("login")
+                  setActiveModal("login");
                 }}
               >
                 <IoPerson className="w-8 h-5 text-gray-400" />
@@ -135,7 +136,6 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
         {/* for bigger screen */}
         <div className="hidden lg:flex gap-2 items-center lg:order-3">
           <button
-        
             onClick={() => setActiveModal("register")}
             className="text-sm uppercase text-center rounded-4xl bg-[#ea6723] hover:bg-[#f88921] text-white p-2 min-w-28"
           >
@@ -155,11 +155,11 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
         </Modal>
 
         <Modal
-          title="Login"
+          title="Register"
           isOpen={activeModal === "register"}
           onClose={closeModal}
         >
-          <RegisterForm />
+          <RegisterForm onClose={closeModal} />
         </Modal>
       </div>
     </section>

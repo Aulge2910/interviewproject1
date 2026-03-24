@@ -2,19 +2,22 @@
 
 import { useRegister } from "./useRegister";
 import { useRegisterForm } from "./useRegisterSchema";
+import { Controller, useForm } from "react-hook-form";
+import Dropdown from "@/app/_components/Dropdown";
 
-const RegisterForm = () => {
+const RegisterForm = ({ onClose }: { onClose: () => void }) => {
+  const { Register, isSubmitting: isRegistering } = useRegister(onClose);
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useRegisterForm();
 
-  const onSubmit = useRegister;
   return (
     <div className="w-full ">
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(Register)}
         className="w-full flex flex-col p-4 gap-4 text-center"
       >
         <input
@@ -48,15 +51,21 @@ const RegisterForm = () => {
         {errors.email && (
           <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
         )}
-        <input
-          {...register("country")}
-          type="text"
-          placeholder="Country"
-          className="p-4 border border-gray-200 rounded-md"
+        <Controller
+          name="country"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              label={
+                <div className="p-4 border border-gray-200 rounded-md w-full text-left bg-white cursor-pointer">
+                  {field.value || "Select Country"}
+                </div>
+              }
+              options={["Malaysia", "Singapore", "Thailand", "Other"]}
+              onSelect={(val) => field.onChange(val)}
+            />
+          )}
         />
-        {errors.country && (
-          <p className="text-red-500 text-sm mt-1">{errors.country.message}</p>
-        )}
         <input
           {...register("mobile_no")}
           type="text"
