@@ -21,7 +21,7 @@ const LoginForm = () => {
           {...register("email")}
           type="email"
           placeholder="Email"
-          className="p-4"
+          className="p-4 border border-gray-200 rounded-md"
         />
         {errors.email && (
           <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
@@ -30,7 +30,7 @@ const LoginForm = () => {
           {...register("password")}
           type="password"
           placeholder="Password"
-          className="p-4"
+          className="p-4 border border-gray-200 rounded-md"
         />
         {errors.password && (
           <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
@@ -38,7 +38,7 @@ const LoginForm = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-fit px-4 py-2 rounded-2xl mx-auto hover:bg-black hover:text-white active:bg-black active:text-white"
+          className="w-fit border px-4 py-2 rounded-2xl mx-auto hover:bg-black hover:text-white active:bg-black active:text-white"
         >
           {isSubmitting ? "Logging in..." : "Login"}
         </button>

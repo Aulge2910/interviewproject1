@@ -11,6 +11,7 @@ export const loginSchema = z.object({
 
   password: z
     .string()
+    .max(255, { message: "Password should not exceed 255 characters" })
     .min(8, { message: "Password must be at least 8 digits." }),
 });
 

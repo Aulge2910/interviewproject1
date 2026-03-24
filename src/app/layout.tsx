@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import SmoothScrollerLayout from "./_layouts/SmoothScrollerLayout";
+import { ToastProvider } from "./_components/Toast/ToastProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,7 +31,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="w-full">
-        <SmoothScrollerLayout>{children}</SmoothScrollerLayout>
+       
+          {" "}
+          <SmoothScrollerLayout>{children}</SmoothScrollerLayout>
+        {/* <ToastProvider> </ToastProvider> */}
+      
       </body>
     </html>
   );

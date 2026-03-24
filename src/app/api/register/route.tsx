@@ -1,21 +1,36 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
+import { registerSchema } from "@/app/_utils/Register/useRegisterSchema";
 
 export async function POST(request: Request) {
   try {
-    const { email, password, username } = await request.json();
+    const body = await request.json();
 
-    // 1. 简单校验（虽然前端有 Zod，但后端也要守好最后关卡）
-    if (!email || !password) {
-      return NextResponse.json({ message: "Missing fields" }, { status: 400 });
+    const validation = registerSchema.safeParse(body);
+    if (!validation.success) {
+      return NextResponse.json(
+        { message: "Invalid input data", errors: validation.error.format() },
+        { status: 400 },
+      );
     }
 
-    // 2. 检查用户是否已存在
+    const {
+      first_name,
+      last_name,
+      country,
+      mobile_no,
+      email,
+      password,
+      confirmed_password,
+    } = validation.data;
+
+    // check if user already exists
     const [existingUser]: any = await db.query(
       "SELECT * FROM users WHERE email = ?",
       [email],
     );
+
     if (existingUser.length > 0) {
       return NextResponse.json(
         { message: "User already exists" },
@@ -23,19 +38,22 @@ export async function POST(request: Request) {
       );
     }
 
-    // 3. 加密密码 (不要存明文！)
+    //  encrypt the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // 4. 插入数据库
+    // insert to database
     await db.query(
-      "INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
-      [username || "New User", email, hashedPassword],
+      "INSERT INTO users (first_name, last_name,country,mobile_no, email, password) VALUES (?, ?, ?)",
+      [first_name, last_name, country, mobile_no, email, hashedPassword],
     );
 
-    return NextResponse.json(
-      { message: "User registered successfully!" },
-      { status: 201 },
-    );
+return NextResponse.json(
+  {
+    message: "User Registration Successful!",
+    status: "success",
+  },
+  { status: 201 },
+);
   } catch (error) {
     console.error("DB Error:", error);
     return NextResponse.json(

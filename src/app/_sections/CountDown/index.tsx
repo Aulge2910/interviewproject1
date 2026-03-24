@@ -6,8 +6,10 @@ import Modal from "@/app/_components/Modal";
 import LoginForm from "@/app/_utils/Login/LoginForm";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
-
+import RegisterForm from "@/app/_utils/Register/RegisterForm";
 import Drawer from "@/app/_components/Drawer";
+
+type ModalType = "login" | "register" | null;
 
 const countDownTimer = (targetDate: string) => {
   const difference = +new Date(targetDate) - +new Date();
@@ -25,9 +27,16 @@ const countDownTimer = (targetDate: string) => {
 };
 
 const CountDown = ({ targetDate }: { targetDate: string }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState<ModalType>(null);
+  const closeModal = () => setActiveModal(null);
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState(countDownTimer(targetDate));
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -44,7 +53,11 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
   return (
     <section className="w-full max-w-380 bg-[#112a4d]">
       <div className="lg:w-[80%]  w-full mx-auto flex flex-wrap lg:grid lg:grid-cols-[auto_1fr_auto] items-center justify-between lg:justify-center py-4 gap-4 lg:gap-10">
-        <img src="/images/blackwelllogo3-1.png" alt="" className="order-1 px-4 lg:px-0" />
+        <img
+          src="/images/blackwelllogo3-1.png"
+          alt=""
+          className="order-1 px-4 lg:px-0"
+        />
 
         {/* count down part - middle part */}
         <div className=" bg-[#2196f3] lg:bg-transparent w-full flex flex-col sm:flex-row gap-4 text-white items-center order-3 lg:order-2 ">
@@ -56,26 +69,32 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
               <span>Days</span>
             </div>{" "}
             {":"}
-            <div className="flex flex-col">
-              <span className="lg:text-3xl">
-                {formatNumber(timeLeft.hours)}
-              </span>
-              <span>Hours</span>
-            </div>{" "}
-            {":"}
-            <div className="flex flex-col">
-              <span className="lg:text-3xl">
-                {formatNumber(timeLeft.minutes)}
-              </span>
-              <span>Minute</span>
-            </div>{" "}
-            {":"}
-            <div className="flex flex-col">
-              <span className="lg:text-3xl">
-                {formatNumber(timeLeft.seconds)}
-              </span>
-              <span>Seconds</span>
-            </div>
+            {mounted ? (
+              <>
+                <div className="flex flex-col">
+                  <span className="lg:text-3xl">
+                    {formatNumber(timeLeft.hours)}
+                  </span>
+                  <span>Hours</span>
+                </div>
+                {":"}
+                <div className="flex flex-col">
+                  <span className="lg:text-3xl">
+                    {formatNumber(timeLeft.minutes)}
+                  </span>
+                  <span>Minute</span>
+                </div>{" "}
+                {":"}
+                <div className="flex flex-col">
+                  <span className="lg:text-3xl">
+                    {formatNumber(timeLeft.seconds)}
+                  </span>
+                  <span>Seconds</span>
+                </div>
+              </>
+            ) : (
+              ""
+            )}
           </div>
         </div>
 
@@ -91,19 +110,19 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
           >
             {/* drawer content*/}
             <div className="flex flex-col gap-6 p-6 items-start">
-              <a
-                href="#"
+              <button
+            onClick={() => setActiveModal("register")}
                 className="text-sm uppercase text-center rounded-4xl bg-[#ea6723] hover:bg-[#f88921] text-white p-2 min-w-full"
               >
                 Register Now
-              </a>
+              </button>
 
               {/* close drawer first, then open modal*/}
               <div
                 className="flex items-center gap-2 cursor-pointer"
                 onClick={() => {
                   setIsHamburgerMenuOpen(false);
-                  setIsModalOpen(true);
+                   setActiveModal("login")
                 }}
               >
                 <IoPerson className="w-8 h-5 text-gray-400" />
@@ -115,23 +134,32 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
 
         {/* for bigger screen */}
         <div className="hidden lg:flex gap-2 items-center lg:order-3">
-          <a
-            href=""
+          <button
+        
+            onClick={() => setActiveModal("register")}
             className="text-sm uppercase text-center rounded-4xl bg-[#ea6723] hover:bg-[#f88921] text-white p-2 min-w-28"
           >
             Register Now
-          </a>
+          </button>
           <IoPerson
-            onClick={() => setIsModalOpen(true)}
-            className="w-8 h-5 text-gray-400"
+            onClick={() => setActiveModal("login")}
+            className="w-8 h-5 text-gray-400 hover:text-gray-600 cursor-pointer"
           />
         </div>
         <Modal
           title="Login"
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
+          isOpen={activeModal === "login"}
+          onClose={closeModal}
         >
           <LoginForm />
+        </Modal>
+
+        <Modal
+          title="Login"
+          isOpen={activeModal === "register"}
+          onClose={closeModal}
+        >
+          <RegisterForm />
         </Modal>
       </div>
     </section>

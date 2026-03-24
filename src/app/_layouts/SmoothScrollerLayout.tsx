@@ -3,6 +3,7 @@ import { ReactNode, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { useGSAP } from "@gsap/react";
 
 // only for client side
 if (typeof window !== "undefined") {
@@ -15,25 +16,21 @@ interface SmoothScrollProps {
 const SmoothScrollerLayout = ({ children }: SmoothScrollProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!wrapperRef.current || !contentRef.current) return;
 
-    const smoother = ScrollSmoother.create({
-      wrapper: wrapperRef.current,
-      content: contentRef.current,
-      smooth: 2,
-      effects: true,
-      normalizeScroll: true,
-    });
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 200);
+  useGSAP(
+    () => {
+      if (!wrapperRef.current || !contentRef.current) return;
 
-    return () => {
-      clearTimeout(timer);
-      smoother.kill();
-    };
-  }, []);
+      ScrollSmoother.create({
+        wrapper: wrapperRef.current,
+        content: contentRef.current,
+        smooth: 2,
+        effects: true,
+        normalizeScroll: true,
+      });
+    },
+    { scope: wrapperRef },
+  );
 
   return (
     <div ref={wrapperRef} id="smooth-wrapper">

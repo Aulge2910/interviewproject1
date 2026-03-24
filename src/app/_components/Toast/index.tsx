@@ -1,13 +1,14 @@
-interface ToastProps {
-    id:string;
-    message:string;
-    type: ToastType;
-    duration?:number;
-    onClose:(id:string)=>void;
-
+export interface ToastData {
+  id: string;
+  message: string;
+  type: ToastType;
+  duration?: number;
+}
+export interface ToastProps extends ToastData {
+  onClose: (id: string) => void;
 }
 
-type ToastType = "success" | "error" | "info";
+export type ToastType = "success" | "error" | "info";
 
 const toastStyles: Record<ToastType, string> = {
   success:
@@ -22,22 +23,22 @@ const toastTitles: Record<ToastType, string> = {
   info: "You receive info",
 };
 
-const Toast = ({id,type,message, duration=500,onClose}:ToastProps) => {
-    const title = toastTitles[type];
-    return (
-      <div
-        className={`relative min-w-100 p-4 flex gap-4 min-h-20 flex-col items-center justify-start rounded-xl shadow-2xl ${toastStyles[type]}`}
+const Toast = ({ id, type, message, duration = 3000, onClose }: ToastProps) => {
+  const title = toastTitles[type];
+  return (
+    <div
+      className={`relative min-w-100 p-4 flex gap-4 min-h-20 flex-col items-center justify-start rounded-xl shadow-2xl ${toastStyles[type]}`}
+    >
+      <span>{title}</span>
+      <span>{message}</span>
+      <button
+        onClick={() => onClose(id)}
+        className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors"
       >
-        <span>{title}</span>
-        <span>{message}</span>
-        <button
-          onClick={() => onClose(id)}
-          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded-full transition-colors"
-        >
-          ✕
-        </button>
-      </div>
-    );
-}
+        ✕
+      </button>
+    </div>
+  );
+};
 
 export default Toast;

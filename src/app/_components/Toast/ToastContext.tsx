@@ -1,0 +1,19 @@
+
+import { createContext, useContext } from "react";
+import { ToastType } from ".";
+
+interface ToastContextFunction {
+  showToast: (message: string, type: ToastType, duration?:number) => void;
+  removeToast: (id: string) => void;
+}
+
+export const ToastContext = createContext<ToastContextFunction | undefined>(undefined);
+ 
+
+export const useToast = () => {
+  const context = useContext(ToastContext);
+  if (!context) {
+    throw new Error("useToast must be used within ToastProvider");
+  }
+  return context;
+};
