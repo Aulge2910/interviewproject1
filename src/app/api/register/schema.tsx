@@ -1,7 +1,7 @@
 import { z } from "zod";
 const COUNTRIES = ["Malaysia", "Vietnam", "Thailand", "Other"] as const;
 type CountryName = (typeof COUNTRIES)[number];
- 
+
 export const registerSchema = z
   .object({
     first_name: z
@@ -19,8 +19,13 @@ export const registerSchema = z
       .optional(),
     mobile_no: z
       .string()
+      .regex(
+        /^[0-9+\- ]+$/,
+        "Mobile number can only contain numbers, '+', '-', and spaces",
+      )
       .min(5, "Mobile number is too short")
       .max(20, { message: "Mobile Number should not exceed 20 digits" }),
+
     password: z
       .string()
       .max(255, { message: "Password should not exceed 255 characters" })

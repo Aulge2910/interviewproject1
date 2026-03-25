@@ -8,7 +8,8 @@ import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 import RegisterForm from "@/app/_utils/Register/RegisterForm";
 import Drawer from "@/app/_components/Drawer";
- import Dropdown from "@/app/_components/Dropdown";
+import Dropdown from "@/app/_components/Dropdown";
+import { useAuth } from "@/app/auth";
 type ModalType = "login" | "register" | null;
 
 const countDownTimer = (targetDate: string) => {
@@ -31,7 +32,7 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
   const closeModal = () => setActiveModal(null);
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState(countDownTimer(targetDate));
-
+  const { isLoggedIn, user, logout } = useAuth();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -110,48 +111,85 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
             onClose={() => setIsHamburgerMenuOpen(false)}
           >
             {/* drawer content*/}
-            <div className="flex flex-col gap-6 p-6 items-start">
-              <button
-                onClick={() => setActiveModal("register")}
-                className="text-sm uppercase text-center rounded-4xl bg-[#ea6723] hover:bg-[#f88921] text-white p-2 min-w-full"
-              >
-                Register Now
-              </button>
 
-              {/* close drawer first, then open modal*/}
-              <div
-                className="flex items-center gap-2 cursor-pointer"
-                onClick={() => {
-                  setIsHamburgerMenuOpen(false);
-                  setActiveModal("login");
-                }}
-              >
-                <IoPerson className="w-8 h-5 text-gray-400" />
-                <span className="text-gray-200 font-medium">Login</span>
-              </div>
+            <div className="flex flex-col gap-6 p-6 items-start">
+              {" "}
+              {isLoggedIn ? (
+                <span className="text-white font-semibold text-xl">
+                  {user?.name}
+                </span>
+              ) : (
+                <button
+                  onClick={() => setActiveModal("register")}
+                  className="text-sm uppercase text-center rounded-4xl bg-[#ea6723] hover:bg-[#f88921] text-white p-2 min-w-28"
+                >
+                  Register Now
+                </button>
+              )}
+              {isLoggedIn ? (
+                <div>
+                  <button
+                    className="bg-white border px-4  py-2 rounded-xl hover:bg-black hover:text-white"
+                    onClick={() => {
+                      if (confirm("Are you sure you want to logout?")) {
+                        logout();
+                      }
+                    }}
+                  >
+                    logout
+                  </button>
+                </div>
+              ) : (
+                <IoPerson
+                  onClick={() => setActiveModal("login")}
+                  className="w-8 h-5 text-gray-400 hover:text-gray-600 cursor-pointer"
+                />
+              )}
             </div>
           </Drawer>
         </div>
 
         {/* for bigger screen */}
         <div className="hidden lg:flex gap-2 items-center lg:order-3">
-          <button
-            onClick={() => setActiveModal("register")}
-            className="text-sm uppercase text-center rounded-4xl bg-[#ea6723] hover:bg-[#f88921] text-white p-2 min-w-28"
-          >
-            Register Now
-          </button>
-          <IoPerson
-            onClick={() => setActiveModal("login")}
-            className="w-8 h-5 text-gray-400 hover:text-gray-600 cursor-pointer"
-          />
+          {isLoggedIn ? (
+            <span className="text-white font-semibold text-xl">
+              {user?.name}
+            </span>
+          ) : (
+            <button
+              onClick={() => setActiveModal("register")}
+              className="text-sm uppercase text-center rounded-4xl bg-[#ea6723] hover:bg-[#f88921] text-white p-2 min-w-28"
+            >
+              Register Now
+            </button>
+          )}
+
+          {isLoggedIn ? (
+            <div>
+              <button
+                className="bg-white border px-4  py-2 rounded-xl hover:bg-black hover:text-white"
+                onClick={() => {
+                  if (confirm("Are you sure you want to logout?")) {
+                    logout();
+                  }
+                }}
+              >
+                logout
+              </button>
+            </div>
+          ) : (
+            <IoPerson
+              onClick={() => setActiveModal("login")}
+              className="w-8 h-5 text-gray-400 hover:text-gray-600 cursor-pointer"
+            />
+          )}
         </div>
         <Modal
           title="Login"
           isOpen={activeModal === "login"}
           onClose={closeModal}
         >
-          <LoginForm />
+          <LoginForm onClose={closeModal} />
         </Modal>
 
         <Modal

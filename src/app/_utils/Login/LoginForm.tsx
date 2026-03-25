@@ -3,7 +3,8 @@
 import { useLogin } from "./useLogin";
 import { useLoginForm } from "./useLoginSchema";
 
-const LoginForm = () => {
+const LoginForm = ({ onClose }: { onClose: () => void }) => {
+  const { Login, isSubmitting: isRegistering } = useLogin(onClose);
   const {
     register,
     handleSubmit,
@@ -14,7 +15,7 @@ const LoginForm = () => {
   return (
     <div className="w-full">
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(Login)}
         className="w-full flex flex-col p-4 gap-4 text-center"
       >
         <input
