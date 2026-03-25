@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import SmoothScrollerLayout from "./_layouts/SmoothScrollerLayout";
 import { ToastProvider } from "./_components/Toast/ToastProvider";
 import { AuthProvider } from "./auth";
+import { ModalProvider } from "./_components/Modal/ModalProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -34,7 +35,9 @@ export default function RootLayout({
       <body className="w-full">
         <AuthProvider>
           <ToastProvider>
+            <ModalProvider>
             <SmoothScrollerLayout>{children}</SmoothScrollerLayout>
+            </ModalProvider>
           </ToastProvider>
         </AuthProvider>
       </body>

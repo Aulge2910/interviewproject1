@@ -3,13 +3,15 @@
 import { IoPerson } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import Modal from "@/app/_components/Modal";
-import LoginForm from "@/app/_utils/Login/LoginForm";
+import LoginForm from "@/app/_components/Form/Login/LoginForm";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
-import RegisterForm from "@/app/_utils/Register/RegisterForm";
+import RegisterForm from "@/app/_components/Form/Register/RegisterForm";
 import Drawer from "@/app/_components/Drawer";
 import Dropdown from "@/app/_components/Dropdown";
 import { useAuth } from "@/app/auth";
+import { useModal } from "@/app/_components/Modal/ModalProvider";
+
 type ModalType = "login" | "register" | null;
 
 const countDownTimer = (targetDate: string) => {
@@ -28,8 +30,7 @@ const countDownTimer = (targetDate: string) => {
 };
 
 const CountDown = ({ targetDate }: { targetDate: string }) => {
-  const [activeModal, setActiveModal] = useState<ModalType>(null);
-  const closeModal = () => setActiveModal(null);
+ const { openModal } = useModal();
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState(countDownTimer(targetDate));
   const { isLoggedIn, user, logout } = useAuth();
@@ -120,7 +121,7 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
                 </span>
               ) : (
                 <button
-                  onClick={() => setActiveModal("register")}
+                  onClick={() => openModal("register", "Registration Form")}
                   className="text-sm uppercase text-center rounded-4xl bg-[#ea6723] hover:bg-[#f88921] text-white p-2 min-w-28"
                 >
                   Register Now
@@ -141,7 +142,7 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
                 </div>
               ) : (
                 <IoPerson
-                  onClick={() => setActiveModal("login")}
+                  onClick={() => openModal("login", "Login Form")}
                   className="w-8 h-5 text-gray-400 hover:text-gray-600 cursor-pointer"
                 />
               )}
@@ -157,7 +158,7 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
             </span>
           ) : (
             <button
-              onClick={() => setActiveModal("register")}
+              onClick={() => openModal("register", "Registration Form")}
               className="text-sm uppercase text-center rounded-4xl bg-[#ea6723] hover:bg-[#f88921] text-white p-2 min-w-28"
             >
               Register Now
@@ -179,26 +180,11 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
             </div>
           ) : (
             <IoPerson
-              onClick={() => setActiveModal("login")}
+              onClick={() => openModal("login", "Login Form")}
               className="w-8 h-5 text-gray-400 hover:text-gray-600 cursor-pointer"
             />
           )}
         </div>
-        <Modal
-          title="Login"
-          isOpen={activeModal === "login"}
-          onClose={closeModal}
-        >
-          <LoginForm onClose={closeModal} />
-        </Modal>
-
-        <Modal
-          title="Register"
-          isOpen={activeModal === "register"}
-          onClose={closeModal}
-        >
-          <RegisterForm onClose={closeModal} />
-        </Modal>
       </div>
     </section>
   );

@@ -1,5 +1,8 @@
+"use client";
 import SplitTextComponent from "@/app/animation/SplitTextComponent";
+import { useModal } from "@/app/_components/Modal/ModalProvider";
 const Hero = () => {
+  const {openModal} = useModal();
   return (
     <section className="flex items-center justify-center max-w-380 mx-auto">
       <div className="w-full grid grid-cols-12 gap-4 p-4 sm:w-[80%] mx-auto">
@@ -26,7 +29,7 @@ const Hero = () => {
 
           {/* divider */}
           <div className="h-4" />
-          
+
           {/* app installation part google/apple */}
           <div className="relative flex w-full gap-4 justify-center items-center">
             {/* regular icon stick here */}
@@ -70,7 +73,7 @@ const Hero = () => {
               Choose & Trade
             </h2>
             <h3 className="font-semibold text-gold text-xl lg:text-4xl italic">
-              <SplitTextComponent/>
+              <SplitTextComponent />
             </h3>
             <span className="text-white">
               Browse and copy hundreds of investment strategies developed by
@@ -83,9 +86,13 @@ const Hero = () => {
               <span className="border-red-500">Oil</span>
               <span className="border-blue-300">Indices</span>
             </div>
-            <a href="" className="text-center rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 min-w-40">
+            <button
+              className="text-center rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 min-w-40"
+              onClick={() => openModal("register", "Registration Form")}
+            >
               Register Now
-            </a>
+            </button>
+       
             <div className="h-2" />
             <span className="text-white italic">
               When you invest, your vapital is at risk. Be prudent

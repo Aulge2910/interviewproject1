@@ -2,7 +2,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-
+import { useModal } from "@/app/_components/Modal/ModalProvider";
 const LinkStepData = [
   {
     id: 1,
@@ -48,6 +48,7 @@ const LinkStepData = [
 ];
 
 const LinkToAccount = () => {
+  const {openModal} = useModal();
   const ContainerRef = useRef<HTMLDivElement>(null);
   const SliderRef = useRef<HTMLUListElement>(null);
 
@@ -113,7 +114,6 @@ const LinkToAccount = () => {
 
       {/* carousel part */}
       <div className="w-full p-4">
-
         {/* parent div = outer container */}
         <div
           ref={ContainerRef}
@@ -166,12 +166,12 @@ const LinkToAccount = () => {
 
       {/* register button */}
       <div className="w-full flex justify-center items-center">
-        <a
-          href=""
-          className="rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 w-40"
+        <button
+          className="text-center rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 min-w-40"
+          onClick={() => openModal("register", "Registration Form")}
         >
           Register Now
-        </a>
+        </button>
       </div>
     </section>
   );

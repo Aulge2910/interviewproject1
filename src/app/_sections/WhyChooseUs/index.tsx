@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import { useModal } from "@/app/_components/Modal/ModalProvider";
 gsap.registerPlugin(ScrollTrigger);
 const Reason = [
   {
@@ -34,6 +34,8 @@ const Reason = [
 
 const WhyChooseUs = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const {openModal} = useModal();
  
   useGSAP(
     () => {
@@ -101,12 +103,12 @@ const WhyChooseUs = () => {
         ))}
         <div className="h-4" />
         <div className="w-full flex items-center justify-center">
-          <a
-            href=""
-            className="rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 min-w-40"
+          <button
+            className="text-center rounded-md bg-[#df7c1e] hover:bg-[#f88921] text-white p-2 min-w-40"
+            onClick={() => openModal("register", "Registration Form")}
           >
             Register Now
-          </a>
+          </button>
         </div>
       </div>
 
