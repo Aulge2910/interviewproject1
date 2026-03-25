@@ -81,7 +81,7 @@ const EnrollNow = () => {
             <input
               {...register("email")}
               placeholder="Email"
-              className="border border-yellow-200 p-4 focus:border-yellow-400 w-full"
+              className="border border-yellow-200 p-4 focus:border-yellow-400 w-full rounded-md"
             />
             {errors.email && (
               <span className="text-white">{errors.email.message}</span>

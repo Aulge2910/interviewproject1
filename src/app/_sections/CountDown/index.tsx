@@ -52,7 +52,7 @@ const CountDown = ({ targetDate }: { targetDate: string }) => {
   const formatNumber = (num: number) => num.toString().padStart(2, "0");
 
   return (
-    <section className="w-full max-w-380 bg-[#112a4d]">
+    <section className="w-full max-w-380 bg-[#112a4d] mx-auto">
       <div></div>
       <div className="lg:w-[80%]  w-full mx-auto flex flex-wrap lg:grid lg:grid-cols-[auto_1fr_auto] items-center justify-between lg:justify-center py-4 gap-4 lg:gap-10">
         <img

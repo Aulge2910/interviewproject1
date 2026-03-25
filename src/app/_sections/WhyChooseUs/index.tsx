@@ -1,6 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 const Reason = [
   {
     id: 1,
@@ -29,6 +33,27 @@ const Reason = [
 ];
 
 const WhyChooseUs = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+ 
+  useGSAP(
+    () => {
+      const whyChooseUsItem = gsap.utils.toArray(".why-choose-us");
+      if (whyChooseUsItem.length > 0) {
+ 
+      gsap.from(whyChooseUsItem, {
+        y: 100,
+        opacity: 0,
+        stagger: 0.2, // 每个元素间隔 0.2s 依次进入
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%", // 当容器顶部到达视口 80% 时触发
+          end: "bottom 20%",
+          toggleActions: "restart pause resume none",
+        },
+      });   }
+    },
+    { scope: containerRef, dependencies: [] },
+  );
   return (
     <section className="w-full h-full text-center max-w-380 mx-auto">
       <div className="h-8 w-full" />
@@ -45,13 +70,15 @@ const WhyChooseUs = () => {
       </div>
 
       {/* mapping of item data */}
-      <div className="flex flex-col w-full sm:w-[80%] gap-2 mx-auto p-4">
+      <div
+        ref={containerRef}
+        className="flex flex-col w-full sm:w-[80%] gap-2 mx-auto p-4"
+      >
         {Reason.map((item, index) => (
           <div
             key={item.id}
-            className="w-full bg-white border rounded-2xl items-center justify-start p-4 sm:grid flex flex-wrap gap-3 sm:grid-cols-[auto_20%_auto]"
+            className="why-choose-us w-full bg-white border rounded-2xl items-center justify-start p-4 sm:grid flex flex-wrap gap-3 sm:grid-cols-[auto_20%_auto]"
           >
-
             {/* first icon in row */}
             <div className="w-20 h-full">
               <img
@@ -70,7 +97,6 @@ const WhyChooseUs = () => {
             <div className="col-span-2 sm:col-span-1">
               <span className="">{item.text}</span>
             </div>
-
           </div>
         ))}
         <div className="h-4" />
