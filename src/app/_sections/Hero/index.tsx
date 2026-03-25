@@ -1,3 +1,4 @@
+import SplitTextComponent from "@/app/animation/SplitTextComponent";
 const Hero = () => {
   return (
     <section className="flex items-center justify-center max-w-380 mx-auto">
@@ -69,7 +70,7 @@ const Hero = () => {
               Choose & Trade
             </h2>
             <h3 className="font-semibold text-gold text-xl lg:text-4xl italic">
-              Ready-To-Go Strategies
+              <SplitTextComponent/>
             </h3>
             <span className="text-white">
               Browse and copy hundreds of investment strategies developed by

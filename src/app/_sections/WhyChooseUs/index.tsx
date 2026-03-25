@@ -43,10 +43,10 @@ const WhyChooseUs = () => {
       gsap.from(whyChooseUsItem, {
         y: 100,
         opacity: 0,
-        stagger: 0.2, // 每个元素间隔 0.2s 依次进入
+        stagger: 0.2,
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%", // 当容器顶部到达视口 80% 时触发
+          start: "top 80%",
           end: "bottom 20%",
           toggleActions: "restart pause resume none",
         },
